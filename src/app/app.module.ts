@@ -39,9 +39,9 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
