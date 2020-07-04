@@ -9,16 +9,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  email: any;
 
   constructor(
     private auth: AuthService,
     private toastr: ToastrService,
     private router: Router
   ) {
-    //auth.getUser.subscribe()
+    this.auth.getUser().subscribe((user: firebase.User) => {
+      this.email = user?.email;
+    });
   }
 
   ngOnInit(): void {
   }
 
+  async handleSignOut() {
+    try {
+      const response = await this.auth.signOut();
+      this.toastr.info('Login again to continue');
+      this.email = null;
+      this.router.navigateByUrl('/signin');
+    } catch (error) {
+      this.toastr.error('Something is wrong');
+    }
+  }
 }
