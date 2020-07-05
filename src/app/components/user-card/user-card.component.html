@@ -1,9 +1,9 @@
-<div class="card user-card text-white">
+<div class="card user-card">
     <div class="background bg-info">
         <img [src]="user.avatar_url"
         class="img-fluid rounded-circle profile-pic border-2 border-white" alt="">
     </div>
-    <div class="card-body">
+    <div class="card-body" *ngIf="user">
         <h5 class="card-title">
             {{user.name}}
         </h5>
